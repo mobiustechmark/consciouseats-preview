@@ -1,0 +1,3 @@
+# Preview/staging site — not for indexing. Remove or relax at real-domain launch.
+User-agent: *
+Disallow: /

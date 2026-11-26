@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>University of Auckland Catering — Conscious Eats</title>
+<meta name="description" content="Approved caterer for University of Auckland events. Plant-based catering, friendly staff and great value. Build your order and we'll be in touch.">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/img/icon-512.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+    theme: {
+        extend: {
+            colors: {
+                brand: {
+                    'green':      '#2FAF8D',
+                    'green-dark': '#1E8A6D',
+                    'green-deep': '#155F4C',
+                    'cream':      '#F5F5EF',
+                    'yellow':     '#EDC041',
+                    'coral':      '#F1605F',
+                    'pink':       '#EA94B0',
+                    'ink':        '#2A3B36',
+                    'muted':      '#63706B'
+                }
+            },
+            fontFamily: {
+                head:  ['Kollektif', 'Segoe UI', 'Arial', 'sans-serif'],
+                body:  ['Roboto', 'Segoe UI', 'Arial', 'sans-serif'],
+                quote: ['Libre Baskerville', 'Georgia', 'serif']
+            }
+        }
+    }
+};
+</script>
+<link rel="stylesheet" href="assets/css/site.css">
+<style>
+
+.input-box { width: 100%; border-radius: 0.75rem; border: 1px solid #E7E7DE; background: #F5F5EF; padding: 0.7rem 1rem; font-family: 'Roboto', sans-serif; color: #2A3B36; }
+.input-box:focus { outline: none; border-color: #2FAF8D; background: #FFFFFF; }
+
+.pkg-card { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.15rem; padding: 1rem 0.75rem; border: 2px solid #E7E7DE; border-radius: 1rem; background: #FFFFFF; cursor: pointer; text-align: center; transition: border-color 0.16s ease, background 0.16s ease, box-shadow 0.16s ease; }
+.pkg-card:hover { border-color: #9BD9C7; }
+.pkg-card:has(input:checked) { border-color: #2FAF8D; background: #EAF7F2; box-shadow: 0 0 0 3px rgba(47,175,141,0.15); }
+.pkg-name { font-family: 'Kollektif', 'Segoe UI', Arial, sans-serif; font-weight: 600; color: #155F4C; }
+.pkg-price { font-size: 0.9rem; color: #63706B; }
+
+.opt { display: flex; align-items: center; gap: 0.55rem; padding: 0.6rem 0.8rem; border: 1px solid #E7E7DE; border-radius: 0.7rem; background: #FFFFFF; cursor: pointer; font-size: 15px; transition: border-color 0.16s ease, background 0.16s ease; }
+.opt:hover { border-color: #9BD9C7; }
+.opt:has(input:checked) { border-color: #2FAF8D; background: #EAF7F2; }
+.opt input { accent-color: #2FAF8D; }
+
+.add-group { margin-top: 0.5rem; border-radius: 0.9rem; overflow: hidden; border: 1px solid #EFEFE7; }
+.add-row { display: flex; align-items: center; gap: 0.75rem; padding: 0.7rem 0.9rem; background: #FFFFFF; border-bottom: 1px solid #F1F1EA; }
+.add-row:last-child { border-bottom: 0; }
+.add-name { font-weight: 500; color: #2A3B36; }
+.add-desc { font-size: 0.85rem; color: #63706B; }
+.add-price { width: 3.5rem; text-align: right; font-variant-numeric: tabular-nums; color: #1E8A6D; font-weight: 600; }
+.add-tbc { color: #63706B; font-weight: 500; }
+
+.stepper { display: inline-flex; align-items: center; flex-shrink: 0; -webkit-tap-highlight-color: transparent; }
+.qty-step { width: 2.5rem; height: 2.75rem; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #D9D9CF; background: #F5F5EF; font-size: 1.2rem; line-height: 1; cursor: pointer; color: #155F4C; touch-action: manipulation; }
+.qty-step:first-of-type { border-radius: 0.55rem 0 0 0.55rem; }
+.qty-step:last-of-type { border-radius: 0 0.55rem 0.55rem 0; }
+.qty-step:hover { background: #EAF7F2; }
+.qty-step:active { background: #d9f0e7; }
+.qty-input { width: 3rem; height: 2.75rem; text-align: center; border-top: 1px solid #D9D9CF; border-bottom: 1px solid #D9D9CF; border-left: 0; border-right: 0; font-variant-numeric: tabular-nums; -moz-appearance: textfield; appearance: textfield; }
+.qty-input::-webkit-outer-spin-button, .qty-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+</style>
+</head>
+
+<body class="font-body text-brand-ink bg-brand-cream">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-head sticky top-0 z-50 bg-brand-green shadow-sm">
+    <div class="mx-auto max-w-6xl px-5">
+        <div class="flex h-16 items-center justify-between md:h-20">
+            <a href="index.html" class="shrink-0" aria-label="Conscious Eats — home">
+                <img src="assets/img/wordmark-text.png" alt="Conscious Eats"
+                     class="h-10 w-auto md:h-12" width="1544" height="413">
+            </a>
+            <span class="font-head text-[15px] font-medium text-white">Approved University Caterer</span>
+        </div>
+    </div>
+</header>
+
+<main id="main">
+
+<section class="relative overflow-hidden bg-brand-green py-14 text-center text-white md:py-20">
+    <img class="motif left-[-24px] top-4 w-24 opacity-60 md:w-32" src="assets/img/bush-yellow.png" alt="" aria-hidden="true">
+    <img class="motif right-3 bottom-6 w-16 opacity-40 md:w-20" src="assets/img/leaves.png" alt="" aria-hidden="true">
+    <div class="relative mx-auto max-w-3xl px-5">
+        <p class="font-head text-sm font-semibold uppercase tracking-[0.18em] text-brand-yellow">University of Auckland</p>
+        <h1 class="mt-3 font-head text-4xl font-bold md:text-5xl">Catering for your next event</h1>
+        <p class="mx-auto mt-5 max-w-2xl text-lg text-white">
+            As an approved university caterer, Conscious Eats can take your event to the next level
+            with our planet-friendly menu, friendly staff and great value-for-money.
+        </p>
+        <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+            <a class="btn btn-yellow" href="#build">Build your order</a>
+            <a class="btn btn-green !bg-white !text-brand-green-dark ring-2 ring-white/70" href="#menu">See the menu</a>
+        </div>
+    </div>
+</section>
+
+<section id="menu" class="py-16 md:py-20">
+    <div class="mx-auto max-w-6xl px-5">
+        <h2 class="text-center font-head text-3xl font-bold text-brand-green-deep md:text-4xl">Our catering menu</h2>
+        <p class="mx-auto mt-3 max-w-2xl text-center text-brand-muted">
+            Three set-meal packages, all plant-based. Pick a package below and choose your curries,
+            then add any extras — the estimated total updates as you go.
+        </p>
+
+        <div class="mt-10 grid gap-6 lg:grid-cols-3">
+            <article class="card flex flex-col p-7">
+                <h3 class="font-head text-2xl font-bold text-brand-green-deep">Basic Meal</h3>
+                <p class="price-tag mt-1 text-2xl">$15 <span class="text-base font-normal text-brand-muted">per person</span></p>
+                <ul class="mt-4 space-y-1.5 text-[15px] text-brand-muted">
+                    <li>Rice (plain, cumin or turmeric)</li>
+                    <li>1 curry from List One</li>
+                    <li>Vegetable nuggets (2)</li>
+                    <li>Poppadom (2)</li>
+                    <li>Green salad with dressing</li>
+                    <li>Dessert — fruit pudding</li>
+                </ul>
+            </article>
+            <article class="card flex flex-col p-7 ring-2 ring-brand-yellow">
+                <div class="flex items-center gap-2">
+                    <h3 class="font-head text-2xl font-bold text-brand-green-deep">Full Meal</h3>
+                    <span class="rounded-full bg-brand-yellow px-2.5 py-0.5 text-xs font-semibold text-brand-green-deep">Popular</span>
+                </div>
+                <p class="price-tag mt-1 text-2xl">$20 <span class="text-base font-normal text-brand-muted">per person</span></p>
+                <ul class="mt-4 space-y-1.5 text-[15px] text-brand-muted">
+                    <li>Rice (plain, cumin or turmeric)</li>
+                    <li>2 curries — one from List One + one from List Two</li>
+                    <li>Vegetable fritters (2)</li>
+                    <li>Poppadom (2)</li>
+                    <li>Green salad with dressing</li>
+                    <li>Dessert — fruit pudding</li>
+                </ul>
+            </article>
+            <article class="card flex flex-col p-7">
+                <h3 class="font-head text-2xl font-bold text-brand-green-deep">Superior Meal</h3>
+                <p class="price-tag mt-1 text-2xl">$25 <span class="text-base font-normal text-brand-muted">per person</span></p>
+                <ul class="mt-4 space-y-1.5 text-[15px] text-brand-muted">
+                    <li>Entrée — dhal or sambhar</li>
+                    <li>Special rice (royal or spinach)</li>
+                    <li>2 curries from List One and/or List Two</li>
+                    <li>Vegetable fritters (3)</li>
+                    <li>Poppadom (3)</li>
+                    <li>Fresh green salad, sunflower-seed dressing</li>
+                    <li>Dessert — fruit pudding with sweet custard</li>
+                </ul>
+            </article>
+        </div>
+
+        <div class="mt-8 grid gap-6 md:grid-cols-2">
+            <div class="card p-7">
+                <h3 class="font-head text-lg font-semibold text-brand-green-deep">Curry — List One</h3>
+                <ul class="mt-3 grid gap-1.5 text-[15px] text-brand-muted sm:grid-cols-2">
+                    <li>Creamy chickpea</li>
+                    <li>Mexican chilli beans</li>
+                    <li>Not-butter Not-chicken (jackfruit)</li>
+                    <li>Malaysian curry</li>
+                    <li>Veggie korma</li>
+                    <li>Satay curry (peanuts or sunflower)</li>
+                    <li>Thai green curry (tofu)</li>
+                </ul>
+            </div>
+            <div class="card p-7">
+                <h3 class="font-head text-lg font-semibold text-brand-green-deep">Curry — List Two</h3>
+                <ul class="mt-3 grid gap-1.5 text-[15px] text-brand-muted sm:grid-cols-2">
+                    <li>Thai Massaman (tofu &amp; veg)</li>
+                    <li>Indian spiced potato &amp; spinach</li>
+                    <li>Creamy spiced spinach tofu</li>
+                    <li>Chinese sweet &amp; sour (walnut dumplings)</li>
+                    <li>Manchurian (cauliflower sweet &amp; sour)</li>
+                </ul>
+                <p class="mt-3 text-sm text-brand-muted">List Two is available on the Full and Superior packages.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="build" class="bg-brand-cream py-16 md:py-20" aria-labelledby="build-heading">
+    <div class="mx-auto max-w-3xl px-5">
+
+        <h2 id="build-heading" class="text-center font-head text-3xl font-bold text-brand-green-deep md:text-4xl">
+            Build your order
+        </h2>
+        <p class="mx-auto mt-3 max-w-xl text-center text-brand-muted">
+            If Conscious Eats may be right for your next event, fill this in and we'll be in touch.
+            Or email <a class="font-medium text-brand-green-dark underline" href="mailto:info@consciouseats.co.nz">info@consciouseats.co.nz</a>
+            or call <a class="font-medium text-brand-green-dark underline" href="tel:+64210620324">021 0620 324</a>.
+        </p>
+
+        <form id="order-form" class="mt-8 space-y-8"
+              action="https://formspree.io/f/REPLACE_WITH_FORM_ID" method="POST">
+
+            <div class="hidden" aria-hidden="true">
+                <label for="company">Company</label>
+                <input type="text" id="company" name="_gotcha" tabindex="-1" autocomplete="off">
+            </div>
+            <input type="hidden" name="_subject" value="New UoA catering order — Conscious Eats">
+            <input type="hidden" name="form" value="UoA catering order (private page)">
+            <input type="hidden" id="order_summary" name="order_summary" value="">
+
+            <div role="group" aria-labelledby="step1-h" class="rounded-3xl bg-white p-6 shadow-md md:p-8">
+                <h3 id="step1-h" class="font-head text-lg font-semibold text-brand-green-deep">1 · Choose your package</h3>
+                <div class="mt-4 grid gap-3 sm:grid-cols-3">
+                    <label class="pkg-card">
+                        <input class="sr-only" type="radio" name="package" value="Basic" data-label="Basic Meal" data-price="15">
+                        <span class="pkg-name">Basic</span><span class="pkg-price">$15 pp</span>
+                    </label>
+                    <label class="pkg-card">
+                        <input class="sr-only" type="radio" name="package" value="Full" data-label="Full Meal" data-price="20">
+                        <span class="pkg-name">Full</span><span class="pkg-price">$20 pp</span>
+                    </label>
+                    <label class="pkg-card">
+                        <input class="sr-only" type="radio" name="package" value="Superior" data-label="Superior Meal" data-price="25">
+                        <span class="pkg-name">Superior</span><span class="pkg-price">$25 pp</span>
+                    </label>
+                </div>
+                <div class="mt-5">
+                    <label class="block font-head text-sm font-medium" for="guests">Number of guests</label>
+                    <input class="input-box mt-2 max-w-[180px]" type="number" id="guests" name="guests" min="1" value="" inputmode="numeric" placeholder="e.g. 50">
+                </div>
+            </div>
+
+            <div role="group" aria-labelledby="step2-h" class="rounded-3xl bg-white p-6 shadow-md md:p-8">
+                <h3 id="step2-h" class="font-head text-lg font-semibold text-brand-green-deep">2 · Choose your curries &amp; dessert</h3>
+
+                <p class="mt-4 font-head text-sm font-medium">Curry — List One <span id="list1-hint" class="font-body font-normal text-brand-muted"></span></p>
+                <div class="mt-2 grid gap-2 sm:grid-cols-2">
+                    <label class="opt"><input type="radio" name="curry_list1" value="Creamy chickpea"> Creamy chickpea</label>
+                    <label class="opt"><input type="radio" name="curry_list1" value="Mexican chilli beans"> Mexican chilli beans</label>
+                    <label class="opt"><input type="radio" name="curry_list1" value="Not-butter Not-chicken"> Not-butter Not-chicken (jackfruit)</label>
+                    <label class="opt"><input type="radio" name="curry_list1" value="Malaysian curry"> Malaysian curry</label>
+                    <label class="opt"><input type="radio" name="curry_list1" value="Veggie korma"> Veggie korma</label>
+                    <label class="opt"><input type="radio" name="curry_list1" value="Satay curry (peanuts)"> Satay curry (peanuts)</label>
+                    <label class="opt"><input type="radio" name="curry_list1" value="Thai green curry"> Thai green curry (tofu)</label>
+                </div>
+
+                <div id="curry-list-two" class="mt-5" style="display:none">
+                    <p class="font-head text-sm font-medium">Curry — List Two <span id="list2-hint" class="font-body font-normal text-brand-muted">(Full &amp; Superior)</span></p>
+                    <div class="mt-2 grid gap-2 sm:grid-cols-2">
+                        <label class="opt"><input type="checkbox" name="curry_list2" value="Thai Massaman"> Thai Massaman (tofu &amp; veg)</label>
+                        <label class="opt"><input type="checkbox" name="curry_list2" value="Indian spiced potato & spinach"> Indian spiced potato &amp; spinach</label>
+                        <label class="opt"><input type="checkbox" name="curry_list2" value="Creamy spiced spinach tofu"> Creamy spiced spinach tofu</label>
+                        <label class="opt"><input type="checkbox" name="curry_list2" value="Chinese sweet & sour (walnut)"> Chinese sweet &amp; sour (walnut)</label>
+                        <label class="opt"><input type="checkbox" name="curry_list2" value="Manchurian"> Manchurian</label>
+                    </div>
+                </div>
+
+                <div class="mt-5 max-w-sm">
+                    <label class="block font-head text-sm font-medium" for="pudding">Fruit pudding</label>
+                    <select class="input-box mt-2" id="pudding" name="pudding">
+                        <option value="">Choose a pudding…</option>
+                        <option>Plum</option>
+                        <option>Banana &amp; choc</option>
+                        <option>Banana &amp; berry</option>
+                        <option>Raisin &amp; walnut/cashew</option>
+                        <option>Apricot</option>
+                        <option>Mango</option>
+                    </select>
+                </div>
+            </div>
+
+            <div role="group" aria-labelledby="step3-h" class="rounded-3xl bg-white p-6 shadow-md md:p-8">
+                <h3 id="step3-h" class="font-head text-lg font-semibold text-brand-green-deep">3 · Additional items <span class="font-body text-sm font-normal text-brand-muted">(optional, price per serve)</span></h3>
+
+                <p class="mt-4 font-head text-sm font-medium text-brand-green">Extras</p>
+                <div class="add-group">
+                    <div class="add-row"><div class="flex-1"><span class="add-name">Mini samosa</span> <span class="add-desc">date &amp; tamarind chutney (2)</span></div><div class="add-price">$5.00</div><div class="stepper"><button type="button" class="qty-step" data-target="a-samosa" data-dir="-1" aria-label="less">&minus;</button><input class="qty-input" id="a-samosa" name="add_samosa" type="number" min="0" value="0" data-price="5" data-label="Mini samosa (2)" inputmode="numeric"><button type="button" class="qty-step" data-target="a-samosa" data-dir="1" aria-label="more">+</button></div></div>
+                    <div class="add-row"><div class="flex-1"><span class="add-name">Spring rolls</span> <span class="add-desc">sweet &amp; sour sauce (2)</span></div><div class="add-price">$6.00</div><div class="stepper"><button type="button" class="qty-step" data-target="a-spring" data-dir="-1" aria-label="less">&minus;</button><input class="qty-input" id="a-spring" name="add_spring_rolls" type="number" min="0" value="0" data-price="6" data-label="Spring rolls (2)" inputmode="numeric"><button type="button" class="qty-step" data-target="a-spring" data-dir="1" aria-label="more">+</button></div></div>
+                    <div class="add-row"><div class="flex-1"><span class="add-name">Fritters</span> <span class="add-desc">pumpkin, potato &amp; cauliflower (2)</span></div><div class="add-price">$5.00</div><div class="stepper"><button type="button" class="qty-step" data-target="a-fritters" data-dir="-1" aria-label="less">&minus;</button><input class="qty-input" id="a-fritters" name="add_fritters" type="number" min="0" value="0" data-price="5" data-label="Fritters (2)" inputmode="numeric"><button type="button" class="qty-step" data-target="a-fritters" data-dir="1" aria-label="more">+</button></div></div>
+                    <div class="add-row"><div class="flex-1"><span class="add-name">Vegetable nuggets</span> <span class="add-desc">spicy tomato sauce (2)</span></div><div class="add-price">$4.00</div><div class="stepper"><button type="button" class="qty-step" data-target="a-nuggets" data-dir="-1" aria-label="less">&minus;</button><input class="qty-input" id="a-nuggets" name="add_nuggets" type="number" min="0" value="0" data-price="4" data-label="Vegetable nuggets (2)" inputmode="numeric"><button type="button" class="qty-step" data-target="a-nuggets" data-dir="1" aria-label="more">+</button></div></div>
+                    <div class="add-row"><div class="flex-1"><span class="add-name">Poppadoms</span> <span class="add-desc">(2)</span></div><div class="add-price">$1.00</div><div class="stepper"><button type="button" class="qty-step" data-target="a-popp" data-dir="-1" aria-label="less">&minus;</button><input class="qty-input" id="a-popp" name="add_poppadoms" type="number" min="0" value="0" data-price="1" data-label="Poppadoms (2)" inputmode="numeric"><button type="button" class="qty-step" data-target="a-popp" data-dir="1" aria-label="more">+</button></div></div>
+                </div>
+
+                <p class="mt-6 font-head text-sm font-medium text-brand-green">Soups &amp; entrée</p>
+                <div class="add-group">
+                    <div class="add-row"><div class="flex-1"><span class="add-name">Sweet &amp; sour lentil soup</span> <span class="add-desc">sambar</span></div><div class="add-price">$5.00</div><div class="stepper"><button type="button" class="qty-step" data-target="a-sambar" data-dir="-1" aria-label="less">&minus;</button><input class="qty-input" id="a-sambar" name="add_sambar" type="number" min="0" value="0" data-price="5" data-label="Sambar soup" inputmode="numeric"><button type="button" class="qty-step" data-target="a-sambar" data-dir="1" aria-label="more">+</button></div></div>
+                    <div class="add-row"><div class="flex-1"><span class="add-name">Dhal</span> <span class="add-desc">spicy lentil tomato</span></div><div class="add-price">$5.00</div><div class="stepper"><button type="button" class="qty-step" data-target="a-dhal" data-dir="-1" aria-label="less">&minus;</button><input class="qty-input" id="a-dhal" name="add_dhal" type="number" min="0" value="0" data-price="5" data-label="Dhal" inputmode="numeric"><button type="button" class="qty-step" data-target="a-dhal" data-dir="1" aria-label="more">+</button></div></div>
+                </div>
+
+                <p class="mt-6 font-head text-sm font-medium text-brand-green">Extra rice</p>
+                <div class="add-group">
+                    <div class="add-row"><div class="flex-1"><span class="add-name">Basmati rice</span></div><div class="add-price">$3.50</div><div class="stepper"><button type="button" class="qty-step" data-target="a-basmati" data-dir="-1" aria-label="less">&minus;</button><input class="qty-input" id="a-basmati" name="add_basmati" type="number" min="0" value="0" data-price="3.5" data-label="Basmati rice" inputmode="numeric"><button type="button" class="qty-step" data-target="a-basmati" data-dir="1" aria-label="more">+</button></div></div>
+                    <div class="add-row"><div class="flex-1"><span class="add-name">Cumin rice</span></div><div class="add-price">$3.50</div><div class="stepper"><button type="button" class="qty-step" data-target="a-cumin" data-dir="-1" aria-label="less">&minus;</button><input class="qty-input" id="a-cumin" name="add_cumin_rice" type="number" min="0" value="0" data-price="3.5" data-label="Cumin rice" inputmode="numeric"><button type="button" class="qty-step" data-target="a-cumin" data-dir="1" aria-label="more">+</button></div></div>
+                    <div class="add-row"><div class="flex-1"><span class="add-name">Yellow rice</span> <span class="add-desc">turmeric</span></div><div class="add-price">$3.50</div><div class="stepper"><button type="button" class="qty-step" data-target="a-yellow" data-dir="-1" aria-label="less">&minus;</button><input class="qty-input" id="a-yellow" name="add_yellow_rice" type="number" min="0" value="0" data-price="3.5" data-label="Yellow rice" inputmode="numeric"><button type="button" class="qty-step" data-target="a-yellow" data-dir="1" aria-label="more">+</button></div></div>
+                    <div class="add-row"><div class="flex-1"><span class="add-name">Royal rice</span> <span class="add-desc">veg &amp; cashews</span></div><div class="add-price">$5.00</div><div class="stepper"><button type="button" class="qty-step" data-target="a-royal" data-dir="-1" aria-label="less">&minus;</button><input class="qty-input" id="a-royal" name="add_royal_rice" type="number" min="0" value="0" data-price="5" data-label="Royal rice (cashews)" inputmode="numeric"><button type="button" class="qty-step" data-target="a-royal" data-dir="1" aria-label="more">+</button></div></div>
+                    <div class="add-row"><div class="flex-1"><span class="add-name">Spinach rice</span></div><div class="add-price">$5.00</div><div class="stepper"><button type="button" class="qty-step" data-target="a-spinach" data-dir="-1" aria-label="less">&minus;</button><input class="qty-input" id="a-spinach" name="add_spinach_rice" type="number" min="0" value="0" data-price="5" data-label="Spinach rice" inputmode="numeric"><button type="button" class="qty-step" data-target="a-spinach" data-dir="1" aria-label="more">+</button></div></div>
+                </div>
+
+                <p class="mt-6 font-head text-sm font-medium text-brand-green">Extra dessert</p>
+                <div class="add-group">
+                    <div class="add-row"><div class="flex-1"><span class="add-name">Custard</span></div><div class="add-price">$3.00</div><div class="stepper"><button type="button" class="qty-step" data-target="a-custard" data-dir="-1" aria-label="less">&minus;</button><input class="qty-input" id="a-custard" name="add_custard" type="number" min="0" value="0" data-price="3" data-label="Custard" inputmode="numeric"><button type="button" class="qty-step" data-target="a-custard" data-dir="1" aria-label="more">+</button></div></div>
+                    <div class="add-row"><div class="flex-1"><span class="add-name">Bliss balls</span> <span class="add-desc">date, cashew, cranberry</span></div><div class="add-price">$6.00</div><div class="stepper"><button type="button" class="qty-step" data-target="a-bliss" data-dir="-1" aria-label="less">&minus;</button><input class="qty-input" id="a-bliss" name="add_bliss_balls" type="number" min="0" value="0" data-price="6" data-label="Bliss balls (cashew)" inputmode="numeric"><button type="button" class="qty-step" data-target="a-bliss" data-dir="1" aria-label="more">+</button></div></div>
+                </div>
+
+                <p class="mt-6 font-head text-sm font-medium text-brand-green">Drinks</p>
+                <div class="add-group">
+                    <div class="add-row"><div class="flex-1"><span class="add-name">Juice</span> <span class="add-desc">apple or orange</span></div><div class="add-price">$6.00</div><div class="stepper"><button type="button" class="qty-step" data-target="a-juice" data-dir="-1" aria-label="less">&minus;</button><input class="qty-input" id="a-juice" name="add_juice" type="number" min="0" value="0" data-price="6" data-label="Juice" inputmode="numeric"><button type="button" class="qty-step" data-target="a-juice" data-dir="1" aria-label="more">+</button></div></div>
+                    <div class="add-row"><div class="flex-1"><span class="add-name">Mango lassi</span></div><div class="add-price">$6.00</div><div class="stepper"><button type="button" class="qty-step" data-target="a-lassi" data-dir="-1" aria-label="less">&minus;</button><input class="qty-input" id="a-lassi" name="add_mango_lassi" type="number" min="0" value="0" data-price="6" data-label="Mango lassi" inputmode="numeric"><button type="button" class="qty-step" data-target="a-lassi" data-dir="1" aria-label="more">+</button></div></div>
+                    <div class="add-row"><div class="flex-1"><span class="add-name">Hot chai tea</span></div><div class="add-price">$3.00</div><div class="stepper"><button type="button" class="qty-step" data-target="a-chai" data-dir="-1" aria-label="less">&minus;</button><input class="qty-input" id="a-chai" name="add_chai" type="number" min="0" value="0" data-price="3" data-label="Hot chai tea" inputmode="numeric"><button type="button" class="qty-step" data-target="a-chai" data-dir="1" aria-label="more">+</button></div></div>
+                    <div class="add-row"><div class="flex-1"><span class="add-name">Non-alcoholic beer / wine</span></div><div class="add-price add-tbc">TBC</div><div class="stepper"><button type="button" class="qty-step" data-target="a-nabeer" data-dir="-1" aria-label="less">&minus;</button><input class="qty-input" id="a-nabeer" name="add_na_beer_wine" type="number" min="0" value="0" data-price="0" data-label="Non-alc beer/wine (price TBC)" inputmode="numeric"><button type="button" class="qty-step" data-target="a-nabeer" data-dir="1" aria-label="more">+</button></div></div>
+                    <div class="add-row"><div class="flex-1"><span class="add-name">Sparkling grape juice</span></div><div class="add-price add-tbc">TBC</div><div class="stepper"><button type="button" class="qty-step" data-target="a-sparkle" data-dir="-1" aria-label="less">&minus;</button><input class="qty-input" id="a-sparkle" name="add_sparkling_grape" type="number" min="0" value="0" data-price="0" data-label="Sparkling grape juice (price TBC)" inputmode="numeric"><button type="button" class="qty-step" data-target="a-sparkle" data-dir="1" aria-label="more">+</button></div></div>
+                </div>
+            </div>
+
+            <div class="rounded-3xl bg-brand-green-deep p-6 text-white shadow-md md:p-8">
+                <h3 class="font-head text-lg font-semibold text-brand-yellow">Your estimate</h3>
+                <dl class="mt-4 space-y-2 text-[15px]">
+                    <div class="flex justify-between gap-4"><dt class="text-white/85">Package <span id="sum-package" class="text-white/60">Not selected</span> × <span id="sum-guests">0</span> guests</dt><dd id="sum-package-sub" class="font-medium tabular-nums">$0.00</dd></div>
+                    <div class="flex justify-between gap-4"><dt class="text-white/85">Additional items</dt><dd id="sum-addons" class="font-medium tabular-nums">$0.00</dd></div>
+                </dl>
+                <div class="mt-4 flex items-end justify-between border-t border-white/15 pt-4">
+                    <span class="font-head text-lg font-semibold">Estimated total</span>
+                    <span id="sum-grand" class="font-head text-2xl font-bold text-brand-yellow tabular-nums">$0.00</span>
+                </div>
+                <p class="mt-3 text-xs text-white/80">Estimate only — excludes any items marked TBC. We'll confirm final pricing when we're in touch.</p>
+            </div>
+
+            <div role="group" aria-labelledby="step4-h" class="rounded-3xl bg-white p-6 shadow-md md:p-8">
+                <h3 id="step4-h" class="font-head text-lg font-semibold text-brand-green-deep">4 · Your details</h3>
+                <div class="mt-4 grid gap-5 sm:grid-cols-2">
+                    <div>
+                        <label class="block font-head text-sm font-medium" for="name">Your name</label>
+                        <input class="input-box mt-2" type="text" id="name" name="name" required autocomplete="name">
+                    </div>
+                    <div>
+                        <label class="block font-head text-sm font-medium" for="email">Email</label>
+                        <input class="input-box mt-2" type="email" id="email" name="email" required autocomplete="email">
+                    </div>
+                    <div>
+                        <label class="block font-head text-sm font-medium" for="phone">Phone <span class="font-body font-normal text-brand-muted">(optional)</span></label>
+                        <input class="input-box mt-2" type="tel" id="phone" name="phone" autocomplete="tel">
+                    </div>
+                    <div>
+                        <label class="block font-head text-sm font-medium" for="organisation">Organisation / department</label>
+                        <input class="input-box mt-2" type="text" id="organisation" name="organisation" autocomplete="organization">
+                    </div>
+                    <div>
+                        <label class="block font-head text-sm font-medium" for="event_date">Date of your event</label>
+                        <input class="input-box mt-2" type="date" id="event_date" name="event_date">
+                    </div>
+                    <div>
+                        <label class="block font-head text-sm font-medium" for="event_location">Where is it?</label>
+                        <input class="input-box mt-2" type="text" id="event_location" name="event_location" placeholder="Building / room, campus">
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label class="block font-head text-sm font-medium" for="comments">Anything else?</label>
+                        <textarea class="input-box mt-2" id="comments" name="comments" rows="4" placeholder="Dietary requirements, timing, delivery details, anything else we should know…"></textarea>
+                    </div>
+                </div>
+                <button class="btn btn-green mt-7 w-full sm:w-auto" type="submit">Send catering request</button>
+                <p class="mt-3 text-sm text-brand-muted">We'll be in touch to confirm the details and final pricing.</p>
+            </div>
+        </form>
+    </div>
+</section>
+
+</main>
+
+<footer class="bg-brand-green-deep py-14 text-white">
+    <div class="mx-auto max-w-6xl px-5">
+        <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+            <div>
+                <img src="assets/img/wordmark-text.png" alt="Conscious Eats" class="h-12 w-auto" width="1544" height="413" loading="lazy">
+                <p class="mt-4 font-quote text-sm italic text-white/75">pocket &amp; planet friendly plant-based treats</p>
+            </div>
+            <div>
+                <h2 class="font-head text-sm font-semibold uppercase tracking-wider text-brand-yellow">Find us</h2>
+                <address class="mt-3 not-italic text-sm leading-relaxed text-white/85">
+                    Room 39, 311 Student Commons Blocks A–D<br>
+                    Kate Edger Food Court, The Quad<br>
+                    34 Princes Street<br>
+                    Auckland CBD
+                </address>
+            </div>
+            <div>
+                <h2 class="font-head text-sm font-semibold uppercase tracking-wider text-brand-yellow">Contact</h2>
+                <ul class="mt-3 space-y-2 text-sm text-white/85">
+                    <li><a class="hover:text-brand-yellow" href="tel:+64210620324">+64 21 0620 324</a></li>
+                    <li><a class="hover:text-brand-yellow" href="mailto:info@consciouseats.co.nz">info@consciouseats.co.nz</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="mt-10 border-t border-white/15 pt-6 text-center text-xs text-white/60">
+            &copy; <span class="js-year">2026</span> Conscious Eats · A not-for-profit at the University of Auckland
+        </p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="assets/js/site.js"></script>
+<script>
+(function () {
+    var $listTwo = $('#curry-list-two');
+
+    $('.qty-input').each(function () {
+        $(this).attr('aria-label', $(this).attr('data-label') + ' — quantity');
+    });
+    $('.qty-step').each(function () {
+        var name = $('#' + $(this).attr('data-target')).attr('data-label');
+        var verb = $(this).attr('data-dir') === '1' ? 'Add one ' : 'Remove one ';
+        $(this).attr('aria-label', verb + name);
+    });
+
+    function money(n) {
+        return '$' + (Math.round(n * 100) / 100).toFixed(2);
+    }
+
+    function selectedPackage() {
+        var el = $('input[name="package"]:checked');
+        if (!el.length) { return null; }
+        return { label: el.attr('data-label'), price: parseFloat(el.attr('data-price')) || 0 };
+    }
+
+    function buildSummary(pkg, guests, pkgSub, addSub, grand) {
+        var lines = [];
+        lines.push('PACKAGE: ' + (pkg ? pkg.label + ' (' + money(pkg.price) + ' pp)' : 'Not selected'));
+        lines.push('GUESTS: ' + guests);
+        var c1 = $('input[name="curry_list1"]:checked');
+        if (c1.length) { lines.push('Curry (List 1): ' + c1.val()); }
+        var c2vals = [];
+        $('input[name="curry_list2"]:checked').each(function () { c2vals.push($(this).val()); });
+        if (c2vals.length && $listTwo.is(':visible')) { lines.push('Curry (List 2): ' + c2vals.join(', ')); }
+        var pud = $('#pudding').val();
+        if (pud) { lines.push('Fruit pudding: ' + pud); }
+
+        var addLines = [];
+        $('.qty-input').each(function () {
+            var q = parseInt($(this).val(), 10);
+            if (isNaN(q) || q < 0) { q = 0; }
+            if (q > 0) {
+                var price = parseFloat($(this).attr('data-price')) || 0;
+                var note = price > 0 ? ' (' + money(q * price) + ')' : ' (price TBC)';
+                addLines.push('  - ' + $(this).attr('data-label') + ' x' + q + note);
+            }
+        });
+        if (addLines.length) { lines.push('ADDITIONAL ITEMS:'); lines = lines.concat(addLines); }
+
+        lines.push('----------');
+        lines.push('Package subtotal: ' + money(pkgSub));
+        lines.push('Add-ons subtotal: ' + money(addSub));
+        lines.push('ESTIMATED TOTAL: ' + money(grand) + ' (excludes TBC items)');
+        $('#order_summary').val(lines.join('\n'));
+    }
+
+    function recalc() {
+        var guests = parseInt($('#guests').val(), 10);
+        if (isNaN(guests) || guests < 0) { guests = 0; }
+        var pkg = selectedPackage();
+        var pkgPrice = pkg ? pkg.price : 0;
+        var pkgSub = pkgPrice * guests;
+
+        var addSub = 0;
+        $('.qty-input').each(function () {
+            var q = parseInt($(this).val(), 10);
+            if (isNaN(q) || q < 0) { q = 0; }
+            var price = parseFloat($(this).attr('data-price')) || 0;
+            addSub += q * price;
+        });
+
+        var grand = pkgSub + addSub;
+
+        $('#sum-package').text(pkg ? pkg.label + ' @ ' + money(pkgPrice) + ' pp' : 'not selected');
+        $('#sum-guests').text(guests);
+        $('#sum-package-sub').text(money(pkgSub));
+        $('#sum-addons').text(money(addSub));
+        $('#sum-grand').text(money(grand));
+
+        buildSummary(pkg, guests, pkgSub, addSub, grand);
+    }
+
+    var list2Max = 1;
+
+    function updateCurryHints() {
+        if (list2Max === 2) {
+            $('#list2-hint').text('(choose up to two)');
+            $('#list1-hint').text('(optional — swap one of your two for a List One curry)');
+        } else {
+            $('#list2-hint').text('(Full & Superior)');
+            $('#list1-hint').text('');
+        }
+    }
+
+    function enforceList2Max(keepEl) {
+        var $checked = $('input[name="curry_list2"]:checked');
+        $checked.each(function () {
+            if (this !== keepEl && $('input[name="curry_list2"]:checked').length > list2Max) {
+                $(this).prop('checked', false);
+            }
+        });
+    }
+
+    $(document).on('change', 'input[name="curry_list2"]', function () {
+        enforceList2Max(this);
+    });
+
+    $('input[name="package"]').on('change', function () {
+        var val = $(this).val();
+        if (val === 'Basic') {
+            $listTwo.slideUp(150);
+            $('input[name="curry_list2"]').prop('checked', false);
+            list2Max = 1;
+        } else {
+            $listTwo.slideDown(150);
+            if (val === 'Superior') { list2Max = 2; } else { list2Max = 1; }
+        }
+        updateCurryHints();
+        enforceList2Max(null);
+        recalc();
+    });
+
+    $(document).on('click', '.qty-step', function () {
+        var target = $('#' + $(this).attr('data-target'));
+        var q = parseInt(target.val(), 10);
+        if (isNaN(q)) { q = 0; }
+        q = q + parseInt($(this).attr('data-dir'), 10);
+        if (q < 0) { q = 0; }
+        target.val(q);
+        recalc();
+    });
+
+    $(document).on('input change',
+        '.qty-input, input[name="curry_list1"], input[name="curry_list2"], #pudding, #guests',
+        recalc);
+
+    recalc();
+})();
+</script>
+</body>
+</html>

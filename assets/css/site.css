@@ -1,0 +1,270 @@
+
+
+@font-face {
+    font-family: 'Kollektif';
+    src: url('../fonts/Kollektif.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kollektif';
+    src: url('../fonts/Kollektif-Italic.woff') format('woff');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kollektif';
+    src: url('../fonts/Kollektif-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kollektif';
+    src: url('../fonts/Kollektif-BoldItalic.woff') format('woff');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+
+
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+}
+
+.skip-link:focus {
+    left: 1rem;
+    top: 1rem;
+    z-index: 200;
+    background: #FFFFFF;
+    color: #155F4C;
+    padding: 0.7rem 1.1rem;
+    border-radius: 0.6rem;
+    font-family: 'Kollektif', 'Segoe UI', Arial, sans-serif;
+    font-weight: 600;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid #EDC041;
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+
+.nav-link {
+    position: relative;
+    display: inline-block;
+    padding: 0.35rem 0.15rem;
+    color: #FFFFFF;
+    text-decoration: none;
+    transition: color 0.18s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 3px;
+    border-radius: 2px;
+    background: #EDC041;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.2s ease;
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after,
+.nav-link.is-current::after {
+    transform: scaleX(1);
+}
+
+.nav-link.is-current {
+    color: #FFFFFF;
+}
+
+
+.nav-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: #1E8A6D;
+}
+
+.nav-panel.is-open {
+    max-height: 26rem;
+}
+
+.nav-panel a {
+    display: block;
+    padding: 0.95rem 1.25rem;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-family: 'Kollektif', 'Segoe UI', Arial, sans-serif;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.nav-panel a:hover,
+.nav-panel a.is-current {
+    background: rgba(0, 0, 0, 0.12);
+    color: #EDC041;
+}
+
+.burger-bar {
+    display: block;
+    width: 22px;
+    height: 2.5px;
+    border-radius: 2px;
+    background: #FFFFFF;
+    transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.burger-bar + .burger-bar {
+    margin-top: 5px;
+}
+
+[aria-expanded="true"] .burger-bar:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+}
+
+[aria-expanded="true"] .burger-bar:nth-child(2) {
+    opacity: 0;
+}
+
+[aria-expanded="true"] .burger-bar:nth-child(3) {
+    transform: translateY(-7.5px) rotate(-45deg);
+}
+
+
+.motif {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+}
+
+
+.card {
+    background: #FFFFFF;
+    border-radius: 1.15rem;
+    overflow: hidden;
+    box-shadow: 0 4px 18px rgba(42, 59, 54, 0.08);
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(42, 59, 54, 0.14);
+}
+
+.price-tag {
+    font-family: 'Kollektif', 'Segoe UI', Arial, sans-serif;
+    font-weight: 700;
+    color: #1E8A6D;
+    line-height: 1;
+}
+
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: 'Kollektif', 'Segoe UI', Arial, sans-serif;
+    font-weight: 600;
+    border-radius: 999px;
+    padding: 0.85rem 1.7rem;
+    text-decoration: none;
+    transition: transform 0.16s ease, background-color 0.16s ease, color 0.16s ease;
+    min-height: 48px;
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+.btn-yellow {
+    background: #EDC041;
+    color: #2A3B36;
+}
+
+.btn-yellow:hover {
+    background: #E0B02D;
+}
+
+.btn-outline {
+    border: 2px solid rgba(255, 255, 255, 0.85);
+    color: #FFFFFF;
+}
+
+.btn-outline:hover {
+    background: #FFFFFF;
+    color: #1E8A6D;
+}
+
+.btn-green {
+    background: #2FAF8D;
+    color: #FFFFFF;
+}
+
+.btn-green:hover {
+    background: #1E8A6D;
+}
+
+
+.pending {
+    border: 2px dashed #F1605F;
+    background: #FDF0EF;
+    border-radius: 0.75rem;
+    padding: 0.85rem 1.1rem;
+    color: #B23F3E;
+}
+
+.pending::before {
+    content: 'TO CONFIRM';
+    display: block;
+    font-family: 'Kollektif', 'Segoe UI', Arial, sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    margin-bottom: 0.2rem;
+}
+
+
+@media print {
+    .site-head,
+    .nav-panel,
+    .motif,
+    .no-print { display: none !important; }
+
+    body { background: #FFFFFF; color: #000000; }
+    .card { box-shadow: none; border: 1px solid #DDDDDD; }
+}
